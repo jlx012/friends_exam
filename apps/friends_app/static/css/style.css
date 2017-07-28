@@ -1,0 +1,13 @@
+h1 {
+  display:inline-block;
+}
+
+.home {
+  margin-left: 250px;
+  display:inline-block;
+}
+
+.logout {
+  margin-left: 100px;
+  display: inline-block;
+}

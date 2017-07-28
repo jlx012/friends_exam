@@ -1,0 +1,14 @@
+<html>
+<head>
+  <title>Person Page</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+    <h1>{{first_name}}'s Profile</h1>
+    <a href="/friends" class='home'>Home</a>
+    <a href="/logout" class='logout'>Logout</a>
+    <h2>Name: {{first_name}} {{ last_name }}</h2>
+    <h2>Email: {{ email }}</h2>
+</body>
+</html>

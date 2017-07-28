@@ -1,0 +1,44 @@
+<html>
+<head>
+  <title>Your Page</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+    <h1>Hello, {{first_name}}</h1>
+    <a href="/logout" class='logout'>Logout</a>
+    <h2>Here is the list of your friends:</h2>
+    <table>
+        <tr>
+            <th>Alias</th>
+            <th>Action</th>
+        </tr>
+        {% if friends %}
+          {% for friend in friends %}
+                <tr>
+                    <td>{{ friend.first_name }}</td>
+                    <td><a href="{% url 'person' id=friend.id %}">View Profile</a></td>
+                    <td><a href="{% url 'remove-friend' id=friend.id %}">Remove Friend</a></td>
+                </tr>
+          {% endfor %}
+        {% else %}
+            <tr>
+                <th>You don't have any friends yet!</th>
+            </tr>
+        {% endif %}
+    </table>
+    <h2>Other Users not on your friend's list:</h2>
+    <table>
+        <tr>
+            <th>Alias</th>
+            <th>Action</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td><a href="{% url 'person' id=user.id %}">{{ user.first_name }}</a></td>
+            <td><a href="{% url 'add-friend' id=user.id %}">Add as Friend</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
